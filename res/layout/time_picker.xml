@@ -4,6 +4,6 @@
     android:id="@+id/time_picker"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_centerInParent="true"
-    android:background="#660066"
-    android:visibility="invisible" />
+    android:layout_gravity="center"
+    android:padding="5dip"
+    android:background="#660066" />
