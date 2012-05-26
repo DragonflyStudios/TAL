@@ -14,7 +14,7 @@ import ca.turix.tal.R;
 public class TimePickerPopup
 {
     
-    public TimePickerPopup(View anchor, int hourOfDay, int minute, boolean is24HourView, OnTimeChangedListener callBack)
+    public TimePickerPopup(View anchor, int timeInMinutes, boolean is24HourView, OnTimeChangedListener callBack)
     {
         m_anchor = anchor;
         
@@ -23,8 +23,8 @@ public class TimePickerPopup
         m_timePicker = (TimePicker)inflater.inflate(R.layout.time_picker, null, false);
 
         m_timePicker.setIs24HourView(is24HourView);
-        m_timePicker.setCurrentHour(hourOfDay);
-        m_timePicker.setCurrentMinute(minute);
+        m_timePicker.setCurrentHour(timeInMinutes / 60);
+        m_timePicker.setCurrentMinute(timeInMinutes % 60);
         m_timePicker.setOnTimeChangedListener(callBack);
         m_timePicker.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
 
@@ -37,6 +37,12 @@ public class TimePickerPopup
     public void show()
     {
         m_popupWindow.showAtLocation(m_anchor, Gravity.CENTER, 0, 0);
+    }
+    
+    public void setTime(int timeInMinutes)
+    {
+        m_timePicker.setCurrentHour(timeInMinutes / 60);
+        m_timePicker.setCurrentMinute(timeInMinutes % 60);
     }
     
     private View m_anchor;
