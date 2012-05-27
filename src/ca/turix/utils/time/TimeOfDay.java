@@ -1,27 +1,7 @@
-package ca.turix.utils;
+package ca.turix.utils.time;
 
-public class TimeFormatter
+public class TimeOfDay
 {
-    
-    public static String lengthInMinutesString(int minutes)
-    {
-        return lengthInMinutesString(minutes, true, null);
-    }
-
-    public static String lengthInMinutesString(int minutes, String negativeString)
-    {
-        return lengthInMinutesString(minutes, true, negativeString);
-    }
-    
-    public static String lengthInMinutesString(int minutes, boolean withUnit, String negativeString)
-    {
-        if (minutes < 0)
-            return negativeString;
-
-        return minutes + (withUnit ? ((minutes > 1) ? " mins" : ((minutes >= 0) ? " min" : "")) : "");
-    }
-    
-    
     public static int timeOfDayInMinutes(int hourOfDay, int minute)
     {
         return hourOfDay * 60 + minute;
@@ -67,5 +47,28 @@ public class TimeFormatter
             sb.append(isPM ? " PM" : " AM");
         
         return sb.toString();
+    }
+
+    // minutes elapsed since midnight
+    private int m_timeInMinutes;
+    
+    public int getTime()
+    {
+        return m_timeInMinutes;
+    }
+    
+    public void setTime(int timeInMinutes)
+    {
+        m_timeInMinutes = timeInMinutes;
+    }
+    
+    public TimeOfDay(int timeInMinutes)
+    {
+        m_timeInMinutes = timeInMinutes;
+    }
+    
+    public String toString()
+    {
+        return timeOfDayString(m_timeInMinutes);
     }
 }
