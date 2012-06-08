@@ -6,4 +6,4 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:padding="5dip"
-    android:background="#660066" />
+    android:background="#003c48" />

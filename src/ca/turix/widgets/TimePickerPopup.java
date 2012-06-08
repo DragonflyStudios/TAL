@@ -33,6 +33,22 @@ public class TimePickerPopup
         m_popupWindow.setBackgroundDrawable(new BitmapDrawable(anchor.getResources()));
     }
 
+    // TODO: make this work!
+    public void showAboveAnchor()
+    {
+        int x = m_anchor.getLeft() + (m_anchor.getRight() - m_anchor.getLeft()) / 2;
+        int y = m_anchor.getTop() + (m_anchor.getBottom() - m_anchor.getTop()) / 2;
+        m_popupWindow.showAtLocation(m_anchor, Gravity.NO_GRAVITY, x, y);
+    }
+
+    // TODO: make this work!
+    public void showAboveView(View view)
+    {
+        int x = view.getLeft() + (view.getRight() - view.getLeft()) / 2;
+        int y = view.getTop() + (view.getBottom() - view.getTop()) / 2;
+        m_popupWindow.showAtLocation(view, Gravity.CENTER, x, y);
+    }
+
     public void show()
     {
         m_popupWindow.showAtLocation(m_anchor, Gravity.CENTER, 0, 0);
